@@ -1,11 +1,3 @@
-temp: t0, 2
-temp: t1, 2
-temp: t2, 2
-temp: t5, 2
-temp: t6, 2
-temp: t7, 2
-temp: t12, 102
-temp: t13, 97
 array a
 label main
 begin

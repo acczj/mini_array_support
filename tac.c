@@ -1158,7 +1158,7 @@ EXP *do_array(SYM *var, EXP *exp)
 		}
 		temp->a->value=p->value;
 
-		printf("temp: %s, %d\n",temp->a->name,temp->a->value);
+		//printf("temp: %s, %d\n",temp->a->name,temp->a->value);
 		code=mk_tac(TAC_ARRAY_COPY,temp->a,var,exp->ret);
 		code->prev=temp;
 		return mk_exp(NULL,temp->a,code);
