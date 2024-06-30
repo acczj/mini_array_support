@@ -24,6 +24,8 @@ var t2
 t2 = a[2]
 actual t2
 call PRINTN
+actual L1
+call PRINTS
 var t3
 t3 = &k
 b = t3
@@ -34,6 +36,8 @@ var t5
 t5 = a[2]
 actual t5
 call PRINTN
+actual L1
+call PRINTS
 var t6
 t6 = a[1]
 var t7
@@ -49,6 +53,8 @@ t11 = t10 / 2
 c = t11
 actual c
 call PRINTN
+actual L1
+call PRINTS
 a1[5] = 97
 a1[c] = 102
 var t12
@@ -59,6 +65,8 @@ var t14
 t14 = t12 - t13
 actual t14
 call PRINTN
+actual L1
+call PRINTS
 end
 	# head
 	LOD R2,STACK
@@ -148,6 +156,17 @@ main:
 	LOD R2,R2+76
 	JMP PRINTN
 
+	# actual L1
+	LOD R5,L1
+	STO (R2+72),R5
+
+	# call PRINTS
+	STO (R2+76),R2
+	LOD R4,R1+32
+	STO (R2+80),R4
+	LOD R2,R2+76
+	JMP PRINTS
+
 	# var t3
 
 	# t3 = &k
@@ -194,6 +213,17 @@ main:
 	STO (R2+92),R4
 	LOD R2,R2+88
 	JMP PRINTN
+
+	# actual L1
+	LOD R5,L1
+	STO (R2+84),R5
+
+	# call PRINTS
+	STO (R2+88),R2
+	LOD R4,R1+32
+	STO (R2+92),R4
+	LOD R2,R2+88
+	JMP PRINTS
 
 	# var t6
 
@@ -261,6 +291,17 @@ main:
 	LOD R2,R2+112
 	JMP PRINTN
 
+	# actual L1
+	LOD R5,L1
+	STO (R2+108),R5
+
+	# call PRINTS
+	STO (R2+112),R2
+	LOD R4,R1+32
+	STO (R2+116),R4
+	LOD R2,R2+112
+	JMP PRINTS
+
 	# a1[5] = 97
 	LOD R5,5
 	LOD R6,(R2+8)
@@ -316,6 +357,17 @@ main:
 	STO (R2+128),R4
 	LOD R2,R2+124
 	JMP PRINTN
+
+	# actual L1
+	LOD R5,L1
+	STO (R2+120),R5
+
+	# call PRINTS
+	STO (R2+124),R2
+	LOD R4,R1+32
+	STO (R2+128),R4
+	LOD R2,R2+124
+	JMP PRINTS
 
 	# end
 	LOD R3,(R2+4)
@@ -376,6 +428,8 @@ PRINTSEND:
 EXIT:
 	END
 
+L1:
+	DBS 10,0
 STATIC:
 	DBN 0,40
 STACK:
