@@ -1,4 +1,4 @@
-	# head
+# head
 	LOD R2,STACK
 	STO (R2),0
 	LOD R4,EXIT
@@ -64,30 +64,43 @@ main:
 	LOD R11,2
 	STO (R8),R11
 
+	# actual L1
+	LOD R8,L1
+	STO (R2+68),R8
+
+	# call PRINTS
+	STO (R2+48),R6
+	STO (R2+72),R2
+	LOD R4,R1+32
+	STO (R2+76),R4
+	LOD R2,R2+72
+	JMP PRINTS
+
 	# var t2
 
 	# t2 = a[2]
-	LOD R8,2
-	LOD R10,R4+0
-	MUL R8,4
-	ADD R8,R10
-	LOD R8,(R8)
-	STO (R2+68),R8
+	LOD R4,STATIC
+	LOD R5,(R4+0)
+	LOD R6,2
+	LOD R5,R4+0
+	MUL R6,4
+	ADD R6,R5
+	LOD R6,(R6)
+	STO (R2+68),R6
 
 	# actual t2
-	LOD R10,(R2+68)
-	STO (R2+72),R10
+	LOD R5,(R2+68)
+	STO (R2+72),R5
 
 	# call PRINTN
-	STO (R2+48),R6
 	STO (R2+76),R2
 	LOD R4,R1+32
 	STO (R2+80),R4
 	LOD R2,R2+76
 	JMP PRINTN
 
-	# actual L1
-	LOD R5,L1
+	# actual L2
+	LOD R5,L2
 	STO (R2+72),R5
 
 	# call PRINTS
@@ -123,19 +136,32 @@ main:
 	LOD R7,4
 	STO (R5),R7
 
+	# actual L1
+	LOD R5,L1
+	STO (R2+80),R5
+
+	# call PRINTS
+	STO (R2+84),R2
+	LOD R4,R1+32
+	STO (R2+88),R4
+	LOD R2,R2+84
+	JMP PRINTS
+
 	# var t5
 
 	# t5 = a[2]
-	LOD R5,2
-	LOD R6,R4+0
-	MUL R5,4
-	ADD R5,R6
-	LOD R5,(R5)
-	STO (R2+80),R5
+	LOD R4,STATIC
+	LOD R5,(R4+0)
+	LOD R6,2
+	LOD R5,R4+0
+	MUL R6,4
+	ADD R6,R5
+	LOD R6,(R6)
+	STO (R2+80),R6
 
 	# actual t5
-	LOD R6,(R2+80)
-	STO (R2+84),R6
+	LOD R5,(R2+80)
+	STO (R2+84),R5
 
 	# call PRINTN
 	STO (R2+88),R2
@@ -144,8 +170,8 @@ main:
 	LOD R2,R2+88
 	JMP PRINTN
 
-	# actual L1
-	LOD R5,L1
+	# actual L2
+	LOD R5,L2
 	STO (R2+84),R5
 
 	# call PRINTS
@@ -210,8 +236,20 @@ main:
 	# c = t11
 	STO (R2+104),R5
 
-	# actual c
+	# actual L3
+	LOD R12,L3
+	STO (R2+108),R12
+
+	# call PRINTS
 	STO (R2+56),R5
+	STO (R2+112),R2
+	LOD R4,R1+32
+	STO (R2+116),R4
+	LOD R2,R2+112
+	JMP PRINTS
+
+	# actual c
+	LOD R5,(R2+56)
 	STO (R2+108),R5
 
 	# call PRINTN
@@ -221,8 +259,8 @@ main:
 	LOD R2,R2+112
 	JMP PRINTN
 
-	# actual L1
-	LOD R5,L1
+	# actual L2
+	LOD R5,L2
 	STO (R2+108),R5
 
 	# call PRINTS
@@ -249,37 +287,49 @@ main:
 	LOD R8,102
 	STO (R5),R8
 
+	# actual L4
+	LOD R5,L4
+	STO (R2+108),R5
+
+	# call PRINTS
+	STO (R2+112),R2
+	LOD R4,R1+32
+	STO (R2+116),R4
+	LOD R2,R2+112
+	JMP PRINTS
+
 	# var t12
 
 	# t12 = a1[c]
-	LOD R5,(R2+56)
-	LOD R6,R2+8
-	MUL R5,4
-	ADD R5,R6
-	LOD R5,(R5)
-	STO (R2+108),R5
+	LOD R5,(R2+8)
+	LOD R6,(R2+56)
+	LOD R5,R2+8
+	MUL R6,4
+	ADD R6,R5
+	LOD R6,(R6)
+	STO (R2+108),R6
 
 	# var t13
 
 	# t13 = a1[5]
-	LOD R6,(R2+8)
-	LOD R9,5
-	LOD R6,R2+8
-	MUL R9,4
-	ADD R9,R6
-	LOD R9,(R9)
-	STO (R2+112),R9
+	LOD R5,(R2+8)
+	LOD R7,5
+	LOD R5,R2+8
+	MUL R7,4
+	ADD R7,R5
+	LOD R7,(R7)
+	STO (R2+112),R7
 
 	# var t14
 
 	# t14 = t12 - t13
-	LOD R6,(R2+108)
-	LOD R10,(R2+112)
-	SUB R6,R10
+	LOD R5,(R2+108)
+	LOD R8,(R2+112)
+	SUB R5,R8
 
 	# actual t14
-	STO (R2+116),R6
-	STO (R2+120),R6
+	STO (R2+116),R5
+	STO (R2+120),R5
 
 	# call PRINTN
 	STO (R2+124),R2
@@ -288,8 +338,8 @@ main:
 	LOD R2,R2+124
 	JMP PRINTN
 
-	# actual L1
-	LOD R5,L1
+	# actual L2
+	LOD R5,L2
 	STO (R2+120),R5
 
 	# call PRINTS
@@ -358,8 +408,14 @@ PRINTSEND:
 EXIT:
 	END
 
-L1:
+L4:
+	DBS 97,49,91,99,93,45,97,49,91,53,93,61,0
+L3:
+	DBS 99,61,0
+L2:
 	DBS 10,0
+L1:
+	DBS 97,91,50,93,61,0
 STATIC:
 	DBN 0,40
 STACK:
